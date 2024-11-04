@@ -1,7 +1,6 @@
 
 # TalkSphere - Video Calling Platform
 
-![TalkSphere Banner](path-to-banner-image)
 
 **TalkSphere** is a cutting-edge video calling platform designed for global connectivity, privacy, and high-quality video experiences. Built with a responsive and modern UI, TalkSphere leverages Video SDK for low latency, high-definition video, and secure end-to-end encrypted calls.
 
@@ -25,12 +24,6 @@ Use TalkSphere on Web, iOS, and Android, making it accessible across devices.
 ### 🔊 Crystal Clear Audio
 Advanced echo cancellation and noise suppression ensure your audio is always crystal clear.
 
-## 📸 Screenshots
-
-Include screenshots of the app in use, such as:
-- Login Screen
-- Video Call Screen
-- Features Section
 
 ## 🚀 Getting Started
 
@@ -74,16 +67,6 @@ Follow these instructions to set up TalkSphere on your local machine for develop
 ## 📚 Documentation
 
 For detailed API usage and customizations, please refer to the [Video SDK Documentation](https://docs.example-videosdk.com).
-
-## 📈 Roadmap
-
-- **Add background blur feature**
-- **Introduce breakout rooms**
-- **Enhance accessibility features**
-
-## 💼 About the Developer
-
-Developed by Pinakesh Chattopadhyay, a Computer Science student passionate about creating user-friendly and accessible applications. Connect with me on [GitHub](https://github.com/Pinakesh2703).
 
 
 ![Screenshot_4-11-2024_01254_127 0 0 1](https://github.com/user-attachments/assets/fb0adab7-128e-4579-b178-be25908028a3)
