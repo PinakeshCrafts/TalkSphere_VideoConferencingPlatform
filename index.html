@@ -3,57 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TalkSphere - Video Calling Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <title>CrazyTalkSphere - Mind-Bending Video Calls</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        .header {
-            background-color: black;
-            padding: 1rem 2rem;
-            width: 100%;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            color: white;
-            font-size: 1.25rem;
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .nav-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            background-color: #2563eb;  /* blue-600 */
-            color: white;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 0.25rem;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.2s;
-        }
-
-        .btn:hover {
-            background-color: #1d4ed8;  /* blue-700 */
-        }
-
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #f472b6;
-            --dark: #020617;
-            --light: #f1f5f9;
+            --primary: #ff00ff;
+            --secondary: #00ffff;
+            --accent: #ffff00;
+            --dark: #000000;
+            --light: #ffffff;
         }
 
         * {
@@ -64,11 +23,11 @@
 
         body, html {
             height: 100%;
-            font-family: 'Inter', sans-serif;
+            font-family: 'VT323', monospace;
             line-height: 1.6;
             color: var(--light);
-            background-color: #0f172a;
-            scroll-behavior: smooth;
+            background-color: var(--dark);
+            overflow-x: hidden;
         }
 
         .container {
@@ -77,178 +36,229 @@
             padding: 0 24px;
         }
 
-        /* Hero Section with Stars */
+        /* Crazy Header */
+        .header {
+            background-color: var(--dark);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transform: skew(-5deg);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bungee Shade', cursive;
+            color: var(--primary);
+            font-size: 2rem;
+            text-decoration: none;
+            text-shadow: 2px 2px var(--secondary), 4px 4px var(--accent);
+            animation: logoGlitch 1s infinite;
+        }
+
+        @keyframes logoGlitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-5px, 5px); }
+            40% { transform: translate(5px, -5px); }
+            60% { transform: translate(-5px, -5px); }
+            80% { transform: translate(5px, 5px); }
+            100% { transform: translate(0); }
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            font-family: 'Press Start 2P', cursive;
+            background-color: var(--primary);
+            color: var(--dark);
+            padding: 0.5rem 1rem;
+            border: none;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Crazy Hero Section */
         .hero {
-            background: linear-gradient(135deg, #0f172a, #1e1b4b);
-            position: relative;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
             min-height: 100vh;
-            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Star layers */
-        .stars-container {
+        .hero::before {
+            content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
             top: 0;
             left: 0;
-        }
-
-        .stars-layer {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-        }
-
-        .stars-small {
-            background-image: radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)),
-                            radial-gradient(1px 1px at 40px 70px, #fff, rgba(0,0,0,0)),
-                            radial-gradient(1px 1px at 50px 160px, #fff, rgba(0,0,0,0)),
-                            radial-gradient(1px 1px at 90px 40px, #fff, rgba(0,0,0,0)),
-                            radial-gradient(1px 1px at 130px 80px, #fff, rgba(0,0,0,0)),
-                            radial-gradient(1px 1px at 160px 120px, #fff, rgba(0,0,0,0));
-            background-repeat: repeat;
-            background-size: 200px 200px;
-            animation: stars-small-move 18s linear infinite;
-            opacity: 0.5;
-        }
-
-        .stars-medium {
-            background-image: radial-gradient(1.5px 1.5px at 50px 60px, #fff, rgba(0,0,0,0)),
-                            radial-gradient(1.5px 1.5px at 100px 120px, #fff, rgba(0,0,0,0)),
-                            radial-gradient(1.5px 1.5px at 150px 40px, #fff, rgba(0,0,0,0)),
-                            radial-gradient(1.5px 1.5px at 200px 180px, #fff, rgba(0,0,0,0));
-            background-repeat: repeat;
-            background-size: 300px 300px;
-            animation: stars-medium-move 15s linear infinite;
-            opacity: 0.7;
-        }
-
-        .stars-large {
-            background-image: radial-gradient(2px 2px at 100px 100px, #fff, rgba(0,0,0,0)),
-                            radial-gradient(2px 2px at 200px 200px, #fff, rgba(0,0,0,0)),
-                            radial-gradient(2px 2px at 300px 300px, #fff, rgba(0,0,0,0));
-            background-repeat: repeat;
-            background-size: 400px 400px;
-            animation: stars-large-move 10s linear infinite;
-            opacity: 0.9;
-        }
-
-        @keyframes stars-small-move {
-            from { transform: translateY(0); }
-            to { transform: translateY(-200px); }
-        }
-
-        @keyframes stars-medium-move {
-            from { transform: translateY(0); }
-            to { transform: translateY(-300px); }
-        }
-
-        @keyframes stars-large-move {
-            from { transform: translateY(0); }
-            to { transform: translateY(-400px); }
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%),
+                radial-gradient(circle at 80% 80%, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 50%);
+            z-index: 1;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
             text-align: center;
-            padding: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
         }
 
         .hero-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 7rem;
+            font-family: 'Bungee Shade', cursive;
+            font-size: 5rem;
             margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
-            /* animation: title-glow 3s ease-in-out infinite alternate; */
-            color: pink;
+            color: var(--accent);
+            text-shadow: 5px 5px 0 var(--primary), 10px 10px 0 var(--secondary);
+            animation: crazyRotate 5s linear infinite;
         }
 
-        @keyframes title-glow {
-            from { text-shadow: 0 0 10px rgba(255,255,255,0.5); }
-            to { text-shadow: 0 0 20px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.6); }
+        @keyframes crazyRotate {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
         }
 
         .login-btn {
-            background-color: white;
-            color: var(--primary);
+            font-family: 'Press Start 2P', cursive;
+            background-color: var(--accent);
+            color: var(--dark);
             padding: 1rem 2rem;
             border: none;
-            border-radius: 9999px;
-            font-size: 1.125rem;
-            font-weight: 600;
+            font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%);
         }
 
         .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
-            background-color: #2563eb;
-            color: #f1f5f9;
+            transform: scale(1.1) rotate(-5deg);
+            background-color: var(--secondary);
+            color: var(--primary);
         }
 
-        /* Sections */
+        /* Crazy Features Section */
         .section {
             padding: 100px 0;
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--primary) 25%, transparent 25%, transparent 50%, var(--primary) 50%, var(--primary) 75%, transparent 75%, transparent);
+            background-size: 60px 60px;
+            opacity: 0.1;
+            animation: moveStripes 10s linear infinite;
+        }
+
+        @keyframes moveStripes {
+            0% { background-position: 0 0; }
+            100% { background-position: 60px 60px; }
         }
 
         .section-title {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Press Start 2P', cursive;
             font-size: 2.5rem;
             margin-bottom: 3rem;
             text-align: center;
-            color: var(--light);
+            color: var(--accent);
+            text-shadow: 3px 3px var(--primary);
         }
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            position: relative;
+            z-index: 1;
         }
 
         .feature-card {
-            background: #1e293b;
+            background: var(--primary);
             padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+            transform: skew(-5deg);
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            scale: 1.1;
-            box-shadow: 0 8px 12px rgba(0,0,0,0.3);
-            background-color: #b2a3ec;
-            color: black;
+            transform: scale(1.05) skew(-5deg) rotate(5deg);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
         }
 
         .feature-icon {
-            font-size: 2rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
-            color: var(--secondary);
+            color: var(--accent);
         }
 
         .feature-title {
+            font-family: 'Press Start 2P', cursive;
             font-size: 1.25rem;
-            font-weight: 600;
             margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .feature-card p {
             color: var(--light);
         }
 
-        /* Developer Section */
+        /* Crazy Developer Section */
         .developer-section {
-            background: #1e293b;
+            background: var(--secondary);
             padding: 80px 0;
-            color: var(--light);
+            color: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .developer-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, var(--primary) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, var(--accent) 0%, transparent 20%);
+            opacity: 0.2;
         }
 
         .developer-content {
@@ -256,27 +266,38 @@
             grid-template-columns: 1fr 2fr;
             gap: 3rem;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
         .developer-image {
             width: 100%;
             max-width: 300px;
             height: 300px;
-            border-radius: 1rem;
+            border-radius: 50%;
             object-fit: cover;
             margin: 0 auto;
+            border: 10px solid var(--primary);
+            animation: spin 20s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .developer-info h3 {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Press Start 2P', cursive;
             font-size: 2rem;
             margin-bottom: 1rem;
-            color: var(--secondary);
+            color: var(--primary);
+            text-shadow: 2px 2px var(--accent);
         }
 
         .developer-info p {
             margin-bottom: 1rem;
             line-height: 1.8;
+            font-size: 1.2rem;
         }
 
         .tech-stack {
@@ -287,32 +308,56 @@
         }
 
         .tech-badge {
-            background: var(--primary-dark);
-            color: white;
+            background: var(--primary);
+            color: var(--light);
             padding: 0.5rem 1rem;
-            border-radius: 9999px;
+            border-radius: 20px;
             font-size: 0.875rem;
+            transform: skew(-10deg);
+            transition: all 0.3s;
         }
 
-        /* Footer */
+        .tech-badge:hover {
+            transform: skew(-10deg) scale(1.1);
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        /* Crazy Footer */
         .footer {
             background: var(--dark);
-            color: white;
+            color: var(--light);
             padding: 80px 0 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--primary) 25%, transparent 25%, transparent 50%, var(--primary) 50%, var(--primary) 75%, transparent 75%, transparent);
+            background-size: 20px 20px;
+            opacity: 0.1;
+            animation: moveStripes 5s linear infinite;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 3rem;
-            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-section h3 {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Press Start 2P', cursive;
             font-size: 1.25rem;
             margin-bottom: 1.5rem;
-            color: var(--secondary);
+            color: var(--accent);
         }
 
         .footer-links {
@@ -324,13 +369,15 @@
         }
 
         .footer-links a {
-            color: rgba(255,255,255,0.8);
+            color: var(--light);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s;
         }
 
         .footer-links a:hover {
-            color: white;
+            color: var(--primary);
+            transform: translateX(5px);
+            display: inline-block;
         }
 
         .social-links {
@@ -340,26 +387,29 @@
         }
 
         .social-links a {
-            color: white;
+            color: var(--light);
             font-size: 1.5rem;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
 
         .social-links a:hover {
-            color: var(--secondary);
-            transform: translateY(-2px);
+            color: var(--accent);
+            transform: scale(1.2) rotate(15deg);
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
             border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.6);
+            color: var(--light);
+            position: relative;
+            z-index: 1;
         }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
 
             .section {
@@ -383,71 +433,60 @@
                 justify-content: center;
             }
         }
+
+        /* Crazy Cursor */
+        body {
+            cursor: none;
+        }
+
+        #custom-cursor {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+        }
     </style>
 </head>
 <body>
+    <div id="custom-cursor"></div>
     <header class="header">
         <nav class="nav">
-            <a href="#" class="logo" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">HOME</a>
+            <a href="#" class="logo">CrazyTalkSphere</a>
             <div class="nav-buttons">
-                <button class="btn">Login with Google</button>
-                <button class="btn">Meeting History</button>
+                <button class="btn">Warp In</button>
+                <button class="btn">Time Travel</button>
             </div>
         </nav>
     </header>
     <section class="hero">
-        <div class="stars-container">
-            <div class="stars-layer stars-small"></div>
-            <div class="stars-layer stars-medium"></div>
-            <div class="stars-layer stars-large"></div>
-        </div>
         <div class="hero-content">
-            <h1 class="hero-title">TALKSPHERE</h1>
-            <button class="login-btn" onclick="loginWithGoogle()">Start Video Call</button>
+            <h1 class="hero-title">CRAZYTALK SPHERE</h1>
+            <button class="login-btn" onclick="startCrazyCall()">START MIND-BENDING CALL</button>
         </div>
     </section>
 
     <section class="section">
         <div class="container">
-            <h2 class="section-title">Why Choose TalkSphere?</h2>
+            <h2 class="section-title">Mind-Warping Features</h2>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
-                    <h3 class="feature-title">Global Connectivity</h3>
-                    <p>Connect with anyone, anywhere in the world with crystal-clear video quality.</p>
+                    <div class="feature-icon">🌈</div>
+                    <h3 class="feature-title">Reality Bender</h3>
+                    <p>Warp your surroundings with psychedelic backgrounds that respond to your voice!</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3 class="feature-title">Secure Communications</h3>
-                    <p>End-to-end encryption ensures your conversations stay private and secure.</p>
+                    <div class="feature-icon">👽</div>
+                    <h3 class="feature-title">Alien Translator</h3>
+                    <p>Communicate in extraterrestrial languages with our AI-powered universal translator!</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🎥</div>
-                    <h3 class="feature-title">HD Video Quality</h3>
-                    <p>Experience high-definition video calls that make every conversation feel natural.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Powered by Video SDK</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title">Low Latency</h3>
-                    <p>High-quality, low-latency video and audio calls for seamless communication.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3 class="feature-title">Multi-platform</h3>
-                    <p>Works seamlessly across Web, iOS, and Android platforms.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔊</div>
-                    <h3 class="feature-title">Crystal Clear Audio</h3>
-                    <p>Advanced echo cancellation and noise suppression for perfect audio clarity.</p>
+                    <div class="feature-icon">🎭</div>
+                    <h3 class="feature-title">Quantum Masquerade</h3>
+                    <p>Transform into multiple versions of yourself across parallel universes simultaneously!</p>
                 </div>
             </div>
         </div>
@@ -455,34 +494,24 @@
 
     <section class="developer-section">
         <div class="container">
-            <h2 class="section-title">About the Developer</h2>
+            <h2 class="section-title">Meet the Mad Scientist</h2>
             <div class="developer-content">
-                <img src="devloper.jpg" alt="Developer" class="developer-image">
+                <img src="developer.jpg" alt="Developer" class="developer-image">
                 <div class="developer-info">
-                    <h3>Pinakesh Chattopadhyay</h3>
-                    <p>A passionate full-stack developer with expertise in building modern web applications. Currently pursuing B.Tech in Computer Science at V.I.T. Bhopal University, I specialize in creating intuitive and scalable solutions.</p>
-                    <p>I've developed several notable projects including SEE-curity (an AI-based surveillance system), a Sorting Visualizer, and ForecastFlow (a weather application). My focus is on creating applications that combine cutting-edge technology with practical utility, while ensuring an exceptional user experience.</p>
+                    <h3>Dr. Pinakesh Quantumpadhyay</h3>
+                    <p>A dimension-hopping full-stack developer who bends reality with code. Currently pursuing Ph.D. in Quantum Computer Science at the Interdimensional Institute of Technology.</p>
+                    <p>Notable projects include: Time-Traveling Debugger, Schrödinger's Cat Simulator, and the Infinite Improbability Drive API.</p>
                     <div class="tech-stack">
-                        <span class="tech-badge">React</span>
-                        <span class="tech-badge">Node.js</span>
-                        <span class="tech-badge">JavaScript</span>
-                        <span class="tech-badge">TailwindCSS</span>
-                        <span class="tech-badge">Firebase</span>
-                        <span class="tech-badge">Git</span>
-                    </div>
-                    <div class="social-links" style="margin-top: 2rem;">
-                        <a href="https://www.linkedin.com/in/pinakesh-vitb/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/Pinakesh2703" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="mailto:pinakesh.chatto2016@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <span class="tech-badge">Quantum React</span>
+                        <span class="tech-badge">Neutrino.js</span>
+                        <span class="tech-badge">Dark Matter CSS</span>
+                        <span class="tech-badge">Tesseract DB</span>
+                        <span class="tech-badge">Time Crystals</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <br>
-    <br>
-    <br>
-    <br>
     
     <footer class="footer">
         <div class="container">
@@ -490,43 +519,48 @@
                 <div class="footer-section">
                     <h3>About Us</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Our Mission</a></li>
-                        <li><a href="#">Features</a></li>
-                        <li><a href="#">Video SDK Integration</a></li>
-                        <li><a href="#">Security</a></li>
+                        <li><a href="#">Our Multiverse</a></li>
+                        <li><a href="#">Quantum Features</a></li>
+                        <li><a href="#">Paradox Resolution</a></li>
+                        <li><a href="#">Temporal Security</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Features</h3>
+                    <h3>Crazy Features</h3>
                     <ul class="footer-links">
-                        <li><a href="#">HD Video Calling</a></li>
-                        <li><a href="#">Screen Sharing</a></li>
-                        <li><a href="#">Virtual Backgrounds</a></li>
-                        <li><a href="#">Group Calls</a></li>
+                        <li><a href="#">5D Holographic Calls</a></li>
+                        <li><a href="#">Time Loop Sharing</a></li>
+                        <li><a href="#">Antimatter Backgrounds</a></li>
+                        <li><a href="#">Telepathic Group Chats</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Contact Us</h3>
+                    <h3>Contact Across Realities</h3>
                     <ul class="footer-links">
-                        <li><a href="mailto:pinakesh.chatto2016@gmail.com"><i class="fas fa-envelope"></i> pinakesh.chatto2016@gmail.com</a></li>
-                        <li><a href="tel:+919733725333"><i class="fas fa-phone"></i> +91-9733725333</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> quantum@crazytalk.multiverse</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> +∞-∞-∞-∞</a></li>
                     </ul>
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/pinakesh-vitb/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/Pinakesh2703" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-interdimensional-linkedin"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-quantum-github"></i></a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 TalkSphere. All rights reserved. | Designed by Pinakesh Chattopadhyay</p>
+                <p>&copy; 2024-∞ CrazyTalkSphere. All realities reserved. | Designed by Dr. Pinakesh Quantumpadhyay</p>
             </div>
         </div>
-    </footer>
-
     <script>
+        
         function loginWithGoogle() {
             window.location.href = 'meet.html';
         }
+        // Custom cursor
+        const cursor = document.getElementById('custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
     </script>
 </body>
 </html>
